@@ -1,1 +1,1 @@
-web: gunicorn MyWills.wsgi --log-file runlogs.log
+web: gunicorn MyWills.wsgi
