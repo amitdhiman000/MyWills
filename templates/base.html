@@ -1,0 +1,142 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+		<title>{{ title }} | MyWills</title>
+		<meta charset="utf-8" />
+		<!--<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />-->
+
+		<style>
+			* { margin: 0px; padding: 0px; border: 0px; }
+			a { text-decoration: none; color: #CEC; }
+			.hline { width: 100%; height: 1px; border-bottom: 1px #333 dotted;}
+			.clear { clear: both; text-indent: -9999px; }
+			.cf { *zoom: 1;  clear: both;}
+			.cf:before, .cf:after { content: " "; display: block; }
+			a:hover {color: #FFF;}
+			body { font-family: Arial,sans-serif,Verdana; font-size: 13px; }
+			#header_bg { width:100%; height:70px; background: #1481e3; color:#FEF; }
+			#header_content { width: 70%; height:inherit; margin: 0px auto;}
+			#company_info { width: 70%; height: inherit; float: left}
+			#logo { width: inherit; height: 50px; padding: 5px; }
+			#user_status { width: 20%; padding: 5px; margin-top:5px; float:right; }
+
+			#container { position: relative; width: 70%; margin: 0px auto; margin-top: 10px; margin-bottom: 40px; clear: both; }
+			#container a { color:#000; }
+			#container a:hover { color:#222; }
+			#nav_bar { width: 100%; margin: 0px auto; background: #f3f3f3; border: 1px solid #e7e7e7; overflow: hidden; }
+			#nav_bar ul { list-style: none;  }
+			#nav_bar li { float: left; }
+			#nav_bar a { display: block; text-align: center; padding: 10px 20px; color: #555; }
+			#nav_bar a:hover { background: #d3d3d3; }
+
+			#body_content { position: relative; width: 100%; margin: 0px auto; margin-top: 10px; min-height: 400px; }
+
+			.form_table { border-spacing: 8px 2px; }
+			.form_table td { padding: 5px; }
+			.form_table tr td:first-child { text-align: right; }
+			p.errors { color:red; font-weight: bold; }
+
+			input[type=radio]:checked { margin-left: 11px; background: #414141; }
+			.inputBox { width: 250px; height: 25Px; border:1px solid #1481e3; }
+			.buttons { width: 100px; height: 27px; background: #1481e3; color: #FEF; cursor: pointer; }
+			.buttons:hover { background: #2090ff; }
+
+			.buttons-long { width: 250px; height: 30px; background: #1481e3; color: #FEF; cursor: pointer; }
+			.buttons-long:hover { background: #2090ff; }
+
+
+			.content { margin-top: 0px; }
+			.content_title { background: #414141; padding: 5px; color:#FEF; }
+			.content_body { padding: 5px; }
+
+			#footer_bg { width: 100%; bottom:0; background: #2e3234; color: #FEF; }
+			#footer_table { width : 70%; border-spacing: 8px 2px;  margin: 0px auto; }
+			#footer_table td { padding: 5px; }
+			#footer_content { position: relative; width: 75%; margin: 0px auto; padding: 5px; text-align: center; }
+			#footer_content span { margin-top: 10px; display: inline-block;  vertical-align: middle; }
+
+		</style>
+
+		<!-- jquery min -->
+		<script type="text/javascript" src="{% static 'js/jquery2.2.2.min.js' %}" >
+		</script>
+
+		<!-- scripts -->
+		{% block script %}
+
+		{% endblock %}
+
+		<!-- styles -->
+		{% block style %}
+
+		{% endblock %}
+	</head>
+
+	<body>
+		<header>
+			<div id="header_bg">
+				<div id="header_content" >
+					<div id="company_info" >
+						<div id="logo" >
+							<img src="{% static 'images/logo.png' %}" width="100"
+							height="50" />
+						</div>
+						<!--<h5>MyOffers</h5>-->
+					</div>
+					<div id="user_status" >
+						{% if user.is_loggedin %}
+							<a href="/accounts/profile/">Hi {{ user.name }}!</a>
+							|
+							<a href="/accounts/logout/">Logout</a>
+						{% endif %}
+					</div>
+				</div>
+			</div>
+		</header>
+		<div id="container">
+			<nav id ="nav_bar">
+				<ul>
+					<li><a href="/">Home</a></li>
+					<li><a href="/aboutus/">About Us</a></li>
+					<li><a href="/contactus/">Contact Us</a></li>
+				</ul>
+			</nav>
+			<div id="body_content" class="cf">
+			{% block content %}
+
+			{% endblock %}
+			</div>
+		</div>
+		<footer>
+			<div id="footer_bg">
+				<div id="footer_content" >
+					<table id="footer_table">
+					<tr>
+						<th>Products</th> <th>Comapny</th> <th>Help</th> <th>Connect</th>
+					</tr>
+					<tr>
+						<td>Pricing</td> <td>About us</td> <td>Getting Started</td> <td>Blog</td>
+					</tr>
+					<tr>
+						<td>Pricing</td> <td>Contact us</td> <td>Projects</td> <td>Twitter</td>
+					</tr>
+					<tr>
+						<td>Pricing</td> <td>About us</td> <td>Getting Started</td> <td>Facebook</td>
+					</tr>
+					<tr>
+						<td>Pricing</td> <td>About us</td> <td>Getting Started</td> <td>Google+</td>
+					</tr>
+					</table>
+					<span><h4>&copy; Copyrights 2012 <a href="/" >MyWills</a></h4></span>
+				</div>
+			</div>
+		</footer>
+	</body>
+</html>
+
+<!--[if IE]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->

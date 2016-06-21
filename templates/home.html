@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+
+{% block style %}
+
+<style type="text/css" >
+#left1 { float:left; max-width:50%; }
+#right1 { float:right;  border : #1481e3 1px dotted; }
+#form-home-register { padding: 5px; }
+#form-inner-box { margin: 10px; padding: 10px; }
+#home-sign-in { text-align: center;  margin-top: 10px; }
+</style>
+{% endblock %}
+
+{% block content %}
+
+
+<div id = "block1">
+<div id="left1">
+<h2>Welcome to MyWills</h2>
+<h4>Save all your important documents and share with your friends and nominees.</h4>
+<p>
+	This is a line. This is a line.This is a line.
+	This is a line.This is a line.This is a line.
+	This is a line. This is a line.This is a line.
+	This is a line.This is a line.This is a line.
+	This is a line.This is a line.This is a line.
+	This is a line.This is a line.This is a line.
+</p>
+</div>
+<div id="right1">
+	<div id="form-home-register" >
+		<div id="form-inner-box" >
+			{% if form.errors %}
+				<p style="color:red;" >Please fill the details!!</p>
+			{% endif %}
+			<form action="/accounts/register/" method="POST" >
+				{% csrf_token %}
+				<table class="form_table" >
+					
+					<tr><td>Full Name* : </td><td><input type="text" name="name" class="inputBox" value="{{form_values.name}}" />
+					</td><td><p class="errors"> {{ form_errors.name }}</p></td>
+					</tr>
+					<tr><td>Email id* : </td><td><input type="text" name="email" class="inputBox" value="{{form_values.email}}"/></td>
+					<td><p class="errors"> {{ form_errors.email }}</p></td></tr>
+
+					<tr><td>Phone : (+91)</td><td><input type="password" name="pass1" class="inputBox" />
+					<td><p class="errors"> {{ form_errors.pass1 }}</p></td></td></tr>
+					
+					<tr><td></td><td>
+					<input type="submit" name="login" value="Signup" class="buttons-long" />
+					</td></tr>
+				</table>
+			</form>
+		</div>
+		<div class="hline" ></div>
+		<div id="home-sign-in" >
+			Already have account <strong><a href="#" > Sign In!</a></strong>
+		</div>
+	</div>
+</div>
+</div>
+{% endblock %}
